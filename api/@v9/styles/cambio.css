@@ -1,0 +1,38 @@
+.cambio {
+  background-color: #f1f1f1;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cambio:hover {
+  background-color: #ddd;
+}
+
+.cambio:active {
+  background-color: #bbb;
+}
+
+.cambio i {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
