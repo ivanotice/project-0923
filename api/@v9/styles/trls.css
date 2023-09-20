@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+  animation: fade-in 1s ease;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: slide-up 1s ease;
+}
+
+textarea {
+  width: 98%;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  resize: vertical;
+  animation: fade-in 1s ease;
+}
+
+#translated-text {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 5px;
+  animation: fade-in 1s ease;
+}
+
+.language-select {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  animation: slide-up 1s ease;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  animation: fade-in 1s ease;
+}
+
+.traduc {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: pulse 1s infinite;
+}
+
+.traduc:hover {
+  background-color: #0056b3;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
