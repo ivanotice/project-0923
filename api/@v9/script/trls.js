@@ -1,1 +1,54 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('0 r=5.4(\'1d-1c\');0 l=5.4(\'1b-t\');0 o=5.4(\'1a-u\');0 m=5.4(\'19-u\');0 6=5.4(\'18-t\');0 3=["17","16","15","14"];13 q(){0 a=s.12(s.11()*3.10);0 9=3[a];3.Z(a,1);3.Y(9);X 9}r.W(\'V\',()=>{0 U=q();0 T=o.8;0 S=m.8;0 R=l.8;0 k=`Q:P(k).i(j=>j.O()).i(7=>{N(7.g===M){0 h=7.L.6;6.b=`Kón:${h}`}J{f.2(\'e d c 2:\',7.g)}}).I(2=>{f.2(\'e d c 2:\',2);6.b=\'H G F E Dón, C B póA z y x w +v\'})});',62,76,'const||error|keys|getElementById|document|translatedText|data|value|randomKey|randomIndex|textContent|un|ocurrido|Ha|console|responseStatus|translation|then|response|apiUrl|inputText|targetLang||sourceLang||getRandomKey|translateButton|Math|text|lang|15092936276|nosotros|con|contacto|en|ngase|favor|por|traducci|la|realizar|al|Error|catch|else|Traducci|responseData|200|if|json|fetch|https|textToTranslate|targetLanguage|sourceLanguage|apiKey|click|addEventListener|return|push|splice|length|random|floor|function|685c32424219e8068141|b0c3f971fabca46866c0|2020e849398dfd968380|eae90859027dda2a08da|translated|target|source|input|btn|translate'.split('|'),0,{}))
+const translateButton = document.getElementById('translate-btn');
+const inputText = document.getElementById('input-text');
+const sourceLang = document.getElementById('source-lang');
+const targetLang = document.getElementById('target-lang');
+const translatedText = document.getElementById('translated-text');
+
+// Array con las 4 claves
+const keys = ["eae90859027dda2a08da", "2020e849398dfd968380", "b0c3f971fabca46866c0", "685c32424219e8068141"];
+
+// Función para obtener una clave aleatoria
+function getRandomKey() {
+  const randomIndex = Math.floor(Math.random() * keys.length);
+  const randomKey = keys[randomIndex];
+
+  // Remover la clave utilizada para que no se repita inmediatamente
+  keys.splice(randomIndex, 1);
+
+  // Agregar la clave utilizada al final del array
+  keys.push(randomKey);
+
+  return randomKey;
+}
+
+// Event listener para el botón de traducción
+translateButton.addEventListener('click', () => {
+  const apiKey = getRandomKey();
+
+  const sourceLanguage = sourceLang.value;
+  const targetLanguage = targetLang.value;
+  const textToTranslate = inputText.value;
+
+  // Construir la URL de la API con los parámetros necesarios
+  const apiUrl = `https://api.mymemory.translated.net/get?q=${textToTranslate}&langpair=${sourceLanguage}|${targetLanguage}&key=${apiKey}`;
+
+  // Realizar la solicitud a la API
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data.responseStatus === 200) {
+        // Obtener la traducción del objeto de respuesta
+        const translation = data.responseData.translatedText;
+
+        // Mostrar la traducción en la página
+        translatedText.textContent = `Traducción: ${translation}`;
+      } else {
+        // Mostrar el error en la consola
+        console.error('Ha ocurrido un error:', data.responseStatus);
+      }
+    })
+    .catch(error => {
+      console.error('Ha ocurrido un error:', error);
+      translatedText.textContent = 'Error al realizar la traducción, por favor póngase en contacto con nosotros +15092936276';
+    });
+});
